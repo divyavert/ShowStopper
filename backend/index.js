@@ -52,7 +52,7 @@ app.use('/images', express.static('upload/images'));
 app.post('/upload', upload.single('product'), (req, res) => {
   res.json({
     success: 1,
-    image_url: `https://showstopper.onrender.com/images/${req.file.filename}`,
+    image_url: `https://jydagjysdvagkuasdu.onrender.com/images/${req.file.filename}`,
   });
 });
 
@@ -166,12 +166,10 @@ const Users = mongoose.model('Users', {
 app.post('/signup', async (req, res) => {
   let check = await Users.findOne({ email: req.body.email });
   if (check) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        errors: 'existing user found with same email address',
-      });
+    return res.status(400).json({
+      success: false,
+      errors: 'existing user found with same email address',
+    });
   }
   let cart = {};
   for (let i = 0; i < 300; i++) {
